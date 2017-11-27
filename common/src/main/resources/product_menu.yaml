@@ -1,0 +1,23 @@
+box:
+  size:
+  - big
+  - small
+  material:
+  - grey
+  - white
+  weight:
+  - 250g
+  - 300g
+  - 350g
+  - 400g
+  gold:
+  - big
+  - small
+  uv:
+  - big
+  - small
+label:
+  type:
+  - general
+  - removable
+  - pvc

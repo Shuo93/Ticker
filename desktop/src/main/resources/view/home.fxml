@@ -1,34 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.collections.FXCollections?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-
 <?import javafx.geometry.Insets?>
-<VBox xmlns="http://javafx.com/javafx"
-      xmlns:fx="http://javafx.com/fxml"
-      fx:controller="com.ticker.desktop.controller.HomeController"
-      spacing="25.0">
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox prefHeight="121.0" prefWidth="218.0" spacing="25.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.ticker.desktop.controller.HomeController">
     <padding>
-        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
+        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
     </padding>
-    <GridPane hgap="10" vgap="10">
-        <Label text="选择产品类型" GridPane.rowIndex="1"/>
-        <ChoiceBox GridPane.rowIndex="1" GridPane.columnIndex="1">
-            <items>
-                <FXCollections fx:factory="observableArrayList">
-                    <String fx:value="纸盒"/>
-                    <String fx:value="拎袋"/>
-                    <String fx:value="样本册"/>
-                    <String fx:value="不干胶"/>
-                </FXCollections>
-            </items>
-        </ChoiceBox>
+    <GridPane hgap="10" prefHeight="33.0" prefWidth="200.0" vgap="10">
+        <Label prefHeight="15.0" prefWidth="106.0" text="%choose" GridPane.rowIndex="1" />
+        <ChoiceBox fx:id="typeChoiceBox" prefHeight="23.0" prefWidth="102.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+      <columnConstraints>
+         <ColumnConstraints />
+         <ColumnConstraints />
+      </columnConstraints>
+      <rowConstraints>
+         <RowConstraints />
+         <RowConstraints />
+      </rowConstraints>
     </GridPane>
     <HBox alignment="BASELINE_RIGHT" spacing="10.0">
-        <Button text="确定"/>
+        <Button fx:id="nextButton" onAction="#ok" text="确定" />
     </HBox>
 </VBox>
