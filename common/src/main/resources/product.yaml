@@ -3,7 +3,7 @@ box:
     price: 200
     unit: all
   bigSize:
-    width: 899
+    width: 889
     length: 1194
     unit: mm
   smallSize:
@@ -67,7 +67,70 @@ box:
         unit: piece
       threshold: 300
   scale: 1.0
-book: todo
+book:
+  bigSize:
+    width: 889
+    length: 1194
+    unit: mm
+  smallSize:
+    width: 787
+    length: 1080
+    unit: mm
+  priceList:
+    price:
+      big:
+        copper:
+          80g: 0.7
+          105g: 0.85
+          128g: 1
+          157g: 1.2
+          200g: 1.55
+          250g: 1.9
+          300g: 2.3
+      small:
+        copper:
+          80g: 0.6
+          105g: 0.75
+          128g: 0.85
+          157g: 0.98
+          200g: 1.3
+          250g: 1.65
+          300g: 2
+    unit: piece
+  process:
+    print:
+      price: 0.4
+      unit: piece
+    laminate:
+      price: 0.8
+      unit: m^2
+  bind:
+    fold:
+      list:
+        1f: 0.008
+        2f: 0.016
+        3f: 0.018
+        4f: 0.024
+        5f: 0.030
+      unit: page
+      threshold: 50
+    staple:
+      list:
+        8k: 0.015
+        16k: 0.01
+      unit: page
+      threshold: 80
+    glue:
+      list:
+        24p-30p: 0.30
+        32p-40p: 0.40
+        42p-62p: 0.50
+        64p-80p: 0.60
+        108p: 1.20
+        200p-228p: 1.40
+        304p-320p: 1.80
+      unit: book
+      threshold: 200
 label:
   price:
     general: 3.5
