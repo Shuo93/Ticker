@@ -2,10 +2,10 @@ package com.ticker.common.model;
 
 import java.util.List;
 
-public class Test {
-    private Box box;
+public class ProductInfo {
 
-    private String book;
+    private Box box;
+    private Book book;
     private Label label;
 
     public Box getBox() {
@@ -16,11 +16,11 @@ public class Test {
         this.box = box;
     }
 
-    public String getBook() {
+    public Book getBook() {
         return book;
     }
 
-    public void setBook(String book) {
+    public void setBook(Book book) {
         this.book = book;
     }
 

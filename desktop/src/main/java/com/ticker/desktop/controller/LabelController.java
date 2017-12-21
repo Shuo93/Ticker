@@ -24,6 +24,7 @@ public abstract class LabelController extends Controller implements IController,
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        setService();
         typeChoiceBox.setItems(service.getTypeList());
         addListener(typeChoiceBox, (observable, oldValue, newValue) -> {});
     }

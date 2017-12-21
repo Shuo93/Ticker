@@ -6,11 +6,11 @@ public class CheckBoxItem {
 
     private String text;
 
-    private String value;
+    private Object value;
 
     private boolean isChecked;
 
-    public CheckBoxItem(String id, String text, String value, boolean isChecked) {
+    public CheckBoxItem(String id, String text, Object value, boolean isChecked) {
         this.id = id;
         this.text = text;
         this.value = value;
@@ -33,11 +33,11 @@ public class CheckBoxItem {
         this.text = text;
     }
 
-    public String getValue() {
+    public Object getValue() {
         return value;
     }
 
-    public void setValue(String value) {
+    public void setValue(Object value) {
         this.value = value;
     }
 

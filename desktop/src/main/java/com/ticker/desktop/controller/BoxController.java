@@ -56,6 +56,7 @@ public abstract class BoxController extends Controller implements Initializable,
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        setService();
         knifeCheckBox.setText(service.getKnife().getText());
         knifeCheckBox.setSelected(service.getKnife().isChecked());
         knifeCheckBox.setAllowIndeterminate(false);

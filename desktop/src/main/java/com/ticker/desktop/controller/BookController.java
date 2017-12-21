@@ -66,6 +66,7 @@ public abstract class BookController extends Controller implements IController, 
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        setService();
         printCheckBox.setText(service.getPrint().getText());
         laminateCheckBox.setText(service.getLaminate().getText());
         bindCheckBox.setText(service.getBind().getText());
