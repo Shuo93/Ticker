@@ -11,7 +11,7 @@ import java.io.IOException;
 
 public class DataLoader {
 
-    private static final Logger logger = LogManager.getLogger(DataLoader.class);
+//    private static final Logger logger = LogManager.getLogger(DataLoader.class);
 
     private static DataLoader ourInstance = new DataLoader();
 
@@ -32,7 +32,7 @@ public class DataLoader {
             productInfo = mapper.readValue(classLoader.getResource("product.yaml"), ProductInfo.class);
             menu = mapper.readValue(classLoader.getResource("product_menu.yaml"), Menu.class);
         } catch (IOException e) {
-            logger.error("Read YAML file failed!" + e.getMessage());
+//            logger.error("Read YAML file failed!" + e.getMessage());
         }
     }
 

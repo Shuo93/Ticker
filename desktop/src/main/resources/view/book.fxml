@@ -71,8 +71,8 @@
       </GridPane>
       <HBox alignment="BOTTOM_CENTER" prefHeight="50.0" prefWidth="260.0" spacing="120.0">
          <children>
-            <Button fx:id="backButton" mnemonicParsing="false" onAction="#back" text="Button" />
-            <Button fx:id="nextButton" mnemonicParsing="false" onAction="#ok" text="Button" />
+            <Button fx:id="backButton" mnemonicParsing="false" onAction="#back" text="%back" />
+            <Button fx:id="nextButton" mnemonicParsing="false" onAction="#ok" text="%ok" />
          </children>
       </HBox>
    </children>

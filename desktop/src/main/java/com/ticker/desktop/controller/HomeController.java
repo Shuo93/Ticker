@@ -11,10 +11,13 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.Label;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.Locale;
 import java.util.ResourceBundle;
 
 public class HomeController extends Controller implements Initializable {
@@ -26,12 +29,11 @@ public class HomeController extends Controller implements Initializable {
 
     private ResourceBundle bundle;
 
-
-
     @FXML
     public void ok(ActionEvent event) throws IOException {
         Type type = (Type) typeChoiceBox.getValue().getValue();
         Stage stage = (Stage) ((Button) event.getSource()).getScene().getWindow();
+        Stage nextStage = new Stage();
         String fxmlName;
         if (Type.POCKET == type) {
             fxmlName = "view/" + Type.BOX + ".fxml";
@@ -40,6 +42,7 @@ public class HomeController extends Controller implements Initializable {
         }
         ClassLoader classLoader = getClass().getClassLoader();
         FXMLLoader loader = new FXMLLoader(classLoader.getResource(fxmlName));
+        loader.setResources(bundle);
         loader.setControllerFactory(param -> {
             switch (type) {
                 case BOOK:
@@ -53,7 +56,12 @@ public class HomeController extends Controller implements Initializable {
                     return new BoxController() {
                         @Override
                         public void setService() {
-                            this.service = new PocketServiceImpl();
+                            this.service = new BoxServiceImpl();
+                        }
+
+                        @Override
+                        public void setType(Type type) {
+                            super.setType(Type.POCKET);
                         }
                     };
                 case BOX:
@@ -61,6 +69,11 @@ public class HomeController extends Controller implements Initializable {
                         @Override
                         public void setService() {
                             this.service = new BoxServiceImpl();
+                        }
+
+                        @Override
+                        public void setType(Type type) {
+                            super.setType(Type.BOX);
                         }
                     };
                 case LABEL:
@@ -80,9 +93,13 @@ public class HomeController extends Controller implements Initializable {
         });
         Parent root = loader.load();
         Scene scene = new Scene(root);
-        stage.setScene(scene);
-        stage.centerOnScreen();
-        stage.show();
+        nextStage.setScene(scene);
+        String title = bundle.getString(type.toString());
+        nextStage.setTitle(title);
+        nextStage.initOwner(stage);
+        nextStage.centerOnScreen();
+        nextStage.initModality(Modality.APPLICATION_MODAL);
+        nextStage.show();
     }
 
     @Override

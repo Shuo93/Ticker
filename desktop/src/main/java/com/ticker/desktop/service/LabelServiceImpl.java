@@ -1,6 +1,7 @@
 package com.ticker.desktop.service;
 
 import com.ticker.common.model.Label;
+import com.ticker.common.service.Calculator;
 import com.ticker.common.util.DataLoader;
 import com.ticker.desktop.model.ChoiceBoxItem;
 import javafx.collections.FXCollections;
@@ -25,5 +26,10 @@ public class LabelServiceImpl implements LabelService {
             return new ChoiceBoxItem(type, name, price);
         }).forEach(typeList::add);
         return typeList;
+    }
+
+    @Override
+    public double calculate(Calculator calculator) {
+        return calculator.calculate();
     }
 }

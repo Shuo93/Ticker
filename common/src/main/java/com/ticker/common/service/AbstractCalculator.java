@@ -1,5 +1,5 @@
 package com.ticker.common.service;
 
-public class AbstractCalculator implements Calculator {
+public abstract class AbstractCalculator implements Calculator {
 
 }

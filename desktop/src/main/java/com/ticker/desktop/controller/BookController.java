@@ -1,5 +1,6 @@
 package com.ticker.desktop.controller;
 
+import com.ticker.desktop.model.ChoiceBoxItem;
 import com.ticker.desktop.service.BookService;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -15,17 +16,17 @@ import java.util.ResourceBundle;
 public abstract class BookController extends Controller implements IController, Initializable {
 
     @FXML
-    private ChoiceBox areaChoiceBox;
+    private ChoiceBox<ChoiceBoxItem> areaChoiceBox;
     @FXML
     private TextField pageText;
     @FXML
     private TextField numberText;
     @FXML
-    private ChoiceBox sizeChoiceBox;
+    private ChoiceBox<ChoiceBoxItem> sizeChoiceBox;
     @FXML
-    private ChoiceBox materialChoiceBox;
+    private ChoiceBox<ChoiceBoxItem> materialChoiceBox;
     @FXML
-    private ChoiceBox weightChoiceBox;
+    private ChoiceBox<ChoiceBoxItem> weightChoiceBox;
     @FXML
     private CheckBox printCheckBox;
     @FXML
@@ -33,7 +34,7 @@ public abstract class BookController extends Controller implements IController, 
     @FXML
     private CheckBox bindCheckBox;
     @FXML
-    private ChoiceBox bindTypeChoiceBox;
+    private ChoiceBox<ChoiceBoxItem> bindTypeChoiceBox;
     @FXML
     private TextField scaleText;
 
@@ -61,7 +62,7 @@ public abstract class BookController extends Controller implements IController, 
 
     @FXML
     public void back(ActionEvent event) {
-
+        closeStage(event);
     }
 
     @Override

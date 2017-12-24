@@ -2,6 +2,7 @@ package com.ticker.desktop.service;
 
 import com.ticker.common.model.Box;
 import com.ticker.common.model.Price;
+import com.ticker.common.service.Calculator;
 import com.ticker.common.util.DataLoader;
 import com.ticker.desktop.model.CheckBoxItem;
 import com.ticker.desktop.model.ChoiceBoxItem;
@@ -141,5 +142,10 @@ public class BoxServiceImpl implements BoxService {
         String id = "uv";
         CheckBoxItem item = new CheckBoxItem(id, "", null, false);
         return item;
+    }
+
+    @Override
+    public double calculate(Calculator calculator) {
+        return calculator.calculate();
     }
 }
