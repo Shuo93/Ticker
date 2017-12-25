@@ -1,5 +1,6 @@
 package com.ticker.desktop.controller;
 
+import com.ticker.common.service.BookCalculator;
 import com.ticker.desktop.model.ChoiceBoxItem;
 import com.ticker.desktop.service.BookService;
 import javafx.event.ActionEvent;
@@ -36,6 +37,8 @@ public abstract class BookController extends Controller implements IController, 
     @FXML
     private ChoiceBox<ChoiceBoxItem> bindTypeChoiceBox;
     @FXML
+    private ChoiceBox<ChoiceBoxItem> bindKeyChoiceBox;
+    @FXML
     private TextField scaleText;
 
     public BookService service;
@@ -57,7 +60,24 @@ public abstract class BookController extends Controller implements IController, 
 
     @FXML
     public void ok(ActionEvent event) {
+        BookCalculator calculator = new BookCalculator();
+        calculator.setK(areaChoiceBox.getValue().getId());
+        calculator.setPageNum(Integer.parseInt(pageText.getText()));
+        calculator.setBookNum(Integer.parseInt(numberText.getText()));
+        calculator.setSize(sizeChoiceBox.getValue().getId());
+        calculator.setMaterial(materialChoiceBox.getValue().getId());
+        calculator.setWeight(weightChoiceBox.getValue().getId());
+        calculator.setPrint(printCheckBox.isSelected());
+        calculator.setLaminate(laminateCheckBox.isSelected());
 
+        calculator.setBind(bindCheckBox.isSelected());
+        if (bindCheckBox.isSelected()) {
+            calculator.setBindType(bindTypeChoiceBox.getValue().getId());
+            calculator.setBindKey(bindKeyChoiceBox.getValue().getId());
+        }
+        calculator.setScale(Double.parseDouble(scaleText.getText()));
+        double price = calculator.calculate();
+        showResult(price);
     }
 
     @FXML
@@ -81,6 +101,9 @@ public abstract class BookController extends Controller implements IController, 
         addListener(sizeChoiceBox, (observable, oldValue, newValue) -> {});
         addListener(materialChoiceBox, (observable, oldValue, newValue) -> {});
         addListener(weightChoiceBox, (observable, oldValue, newValue) -> {});
-        addListener(bindTypeChoiceBox, (observable, oldValue, newValue) -> {});
+        addListener(bindTypeChoiceBox, (observable, oldValue, newValue) -> {
+            String id = ((ChoiceBoxItem)newValue).getId();
+            bindKeyChoiceBox.setItems(service.getBindKey(id));
+        });
     }
 }

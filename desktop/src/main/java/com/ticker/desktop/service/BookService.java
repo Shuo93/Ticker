@@ -21,4 +21,6 @@ public interface BookService extends Service {
     CheckBoxItem getLaminate();
 
     CheckBoxItem getBind();
+
+    ObservableList<ChoiceBoxItem> getBindKey(String id);
 }

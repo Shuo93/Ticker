@@ -139,6 +139,15 @@ public class Book extends AbstractProduct {
         List<String> material;
         List<String> bind;
         List<String> weight;
+        Map<String, List<String>> bindKey;
+
+        public Map<String, List<String>> getBindKey() {
+            return bindKey;
+        }
+
+        public void setBindKey(Map<String, List<String>> bindKey) {
+            this.bindKey = bindKey;
+        }
 
         public List<String> getK() {
             return k;

@@ -111,6 +111,17 @@ public class BookServiceImpl implements BookService {
     }
 
     @Override
+    public ObservableList<ChoiceBoxItem> getBindKey(String id) {
+        List<String> list = menu.getBindKey().get(id);
+        ObservableList<ChoiceBoxItem> bindList = FXCollections.observableArrayList();
+        list.stream().map(type -> {
+            String name = bundle.getString(type);
+            return new ChoiceBoxItem(type, name, null);
+        }).forEach(bindList::add);
+        return bindList;
+    }
+
+    @Override
     public double calculate(Calculator calculator) {
         return calculator.calculate();
     }

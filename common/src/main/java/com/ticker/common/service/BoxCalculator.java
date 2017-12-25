@@ -9,17 +9,17 @@ public class BoxCalculator extends AbstractCalculator {
 
     private Area area;
     private int number;
-    private int emboss;
+    private boolean emboss;
     private String size;
     private String material;
     private String weight;
-    private int print;
-    private int corrugate;
-    private int laminate;
-    private int gold;
+    private boolean print;
+    private boolean corrugate;
+    private boolean laminate;
+    private boolean gold;
     private double goldArea;
     private String goldSize;
-    private int uv;
+    private boolean uv;
     private double uvArea;
     private String uvSize;
     private double scale;
@@ -32,7 +32,7 @@ public class BoxCalculator extends AbstractCalculator {
         this.number = number;
     }
 
-    public void setEmboss(int emboss) {
+    public void setEmboss(boolean emboss) {
         this.emboss = emboss;
     }
 
@@ -48,19 +48,19 @@ public class BoxCalculator extends AbstractCalculator {
         this.weight = weight;
     }
 
-    public void setPrint(int print) {
+    public void setPrint(boolean print) {
         this.print = print;
     }
 
-    public void setCorrugate(int corrugate) {
+    public void setCorrugate(boolean corrugate) {
         this.corrugate = corrugate;
     }
 
-    public void setLaminate(int laminate) {
+    public void setLaminate(boolean laminate) {
         this.laminate = laminate;
     }
 
-    public void setGold(int gold) {
+    public void setGold(boolean gold) {
         this.gold = gold;
     }
 
@@ -72,7 +72,7 @@ public class BoxCalculator extends AbstractCalculator {
         this.goldSize = goldSize;
     }
 
-    public void setUv(int uv) {
+    public void setUv(boolean uv) {
         this.uv = uv;
     }
 
@@ -91,9 +91,36 @@ public class BoxCalculator extends AbstractCalculator {
     @Override
     public double calculate() {
         double area = calculateArea();
+        double page = 0;
+        if (size.equals("small")) {
+            page = area * 10 * 10 / (box.getSmallSize().getLength() * box.getSmallSize().getWidth());
+        } else if (size.equals("big")) {
+            page = area * 10 * 10 / (box.getBigSize().getLength() * box.getBigSize().getWidth());
+        }
+        area /= 10000;
+        double fixPrice = box.getKnife().getPrice();
+        double basePrice = box.getPriceList().getPrice().get(size).get(material).get(weight) * page * number;
+        double processPrice = (print ? box.getProcess().getPrint().getPrice() * page * number : 0)
+                + (emboss ? box.getProcess().getEmboss().getPrice() *  number : 0)
+                + (corrugate ? box.getProcess().getCorrugate().getPrice() * area * number : 0)
+                + (laminate ? box.getProcess().getLaminate().getPrice() * area * number : 0);
 
-        double result =0;
-        return 0;
+        double goldPrice = gold ? ((goldSize.equals("big") ? 1 : 0)
+                * box.getProcess().getGold().getBig().getPrice() * goldArea * number
+                + (goldSize.equals("small") ? 1 : 0)
+                * (box.getProcess().getGold().getSmall().getPrice() * goldArea / 10000 * number
+                + box.getProcess().getGold().getExtra().getPrice() * page)) : 0;
+
+        double uvPrice = uv ? ((uvSize.equals("big") ? 1 : 0)
+                * box.getProcess().getUv().getBig().getPrice() * uvArea / 10000 * number
+                + (uvSize.equals("small") ? 1 : 0)
+                * box.getProcess().getUv().getSmall().getPrice() * page) : 0;
+        uvPrice = (uvPrice != 0)
+                ? (uvPrice > 300 ? uvPrice : 300)
+                : 0;
+
+        double result = (fixPrice + basePrice + processPrice + goldPrice + uvPrice) * scale;
+        return result;
     }
 
     public double calculateArea() {

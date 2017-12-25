@@ -19,7 +19,7 @@ import java.util.ResourceBundle;
 
 public abstract class BoxController extends Controller implements Initializable, IController {
 
-    private Type type;
+    public Type type;
 
     @FXML
     private TextField lengthText;
@@ -68,6 +68,7 @@ public abstract class BoxController extends Controller implements Initializable,
     public void initialize(URL location, ResourceBundle resources) {
         bundle = resources;
         setService();
+        setType();
         knifeCheckBox.setText(service.getKnife().getText());
         knifeCheckBox.setSelected(service.getKnife().isChecked());
         knifeCheckBox.setAllowIndeterminate(false);
@@ -93,6 +94,7 @@ public abstract class BoxController extends Controller implements Initializable,
         });
         addListener(goldChoiceBox, (observable, oldValue, newValue) -> {});
         addListener(uvChoiceBox, (observable, oldValue, newValue) -> {});
+        scaleText.setText("1.0");
     }
 
     @FXML
@@ -145,30 +147,38 @@ public abstract class BoxController extends Controller implements Initializable,
                 break;
         }
         Area area = new Area();
-        area.setHeight(Double.parseDouble(heightText.getText()));
-        area.setWidth(Double.parseDouble(widthText.getText()));
-        area.setDepth(Double.parseDouble(lengthText.getText()));
+        area.setHeight(Double.parseDouble(heightText.getText().isEmpty()
+                ? "0" : heightText.getText()));
+        area.setWidth(Double.parseDouble(widthText.getText().isEmpty()
+                ? "0" : widthText.getText()));
+        area.setDepth(Double.parseDouble(lengthText.getText().isEmpty()
+                ? "0" : lengthText.getText()));
         calculator.setArea(area);
         calculator.setNumber(Integer.parseInt(numberText.getText()));
-        calculator.setEmboss(embossCheckBox.isSelected() ? 1 : 0);
+        calculator.setEmboss(embossCheckBox.isSelected());
         calculator.setSize(sizeChoiceBox.getValue().getId());
         calculator.setMaterial(materialChoiceBox.getValue().getId());
         calculator.setWeight(weightChoiceBox.getValue().getId());
 
-        calculator.setCorrugate(corrugateCheckBox.isSelected() ? 1 : 0);
-        calculator.setLaminate(laminateCheckBox.isSelected() ? 1 : 0);
+        calculator.setCorrugate(corrugateCheckBox.isSelected());
+        calculator.setLaminate(laminateCheckBox.isSelected());
+        calculator.setPrint(printCheckBox.isSelected());
 
-        calculator.setPrint(printCheckBox.isSelected() ? 1 : 0);
+        calculator.setGold(goldCheckBox.isSelected());
+        if (goldCheckBox.isSelected()) {
+            calculator.setGoldArea(Double.parseDouble(goldAreaText.getText().trim().isEmpty()
+                    ? "0" : goldAreaText.getText().trim()));
+            calculator.setGoldSize(goldChoiceBox.getValue().getId());
+        }
+        calculator.setUv(uvCheckBox.isSelected());
+        if (uvCheckBox.isSelected()) {
+            calculator.setUvSize(uvChoiceBox.getValue().getId());
+            calculator.setUvArea(Double.parseDouble(uvAreaText.getText().trim().isEmpty()
+                    ? "0" : uvAreaText.getText().trim()));
+        }
 
-        calculator.setGold(goldCheckBox.isSelected() ? 1 : 0);
-        calculator.setGoldArea(Double.parseDouble(goldAreaText.getText()));
-        calculator.setGoldSize(goldChoiceBox.getValue().getId());
-
-        calculator.setUv(uvCheckBox.isSelected() ? 1 : 0);
-        calculator.setUvSize(uvChoiceBox.getValue().getId());
-        calculator.setUvArea(Double.parseDouble(uvAreaText.getText()));
-
-        calculator.setScale(Double.parseDouble(scaleText.getText()));
+        calculator.setScale(Double.parseDouble(scaleText.getText().trim().isEmpty()
+                ? "0" : scaleText.getText().trim()));
         double price = calculator.calculate();
         showResult(price);
     }
@@ -178,7 +188,5 @@ public abstract class BoxController extends Controller implements Initializable,
         closeStage(event);
     }
 
-    public void setType(Type type) {
-        this.type = type;
-    }
+    public abstract void setType();
 }

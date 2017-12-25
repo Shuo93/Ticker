@@ -60,8 +60,8 @@ public class HomeController extends Controller implements Initializable {
                         }
 
                         @Override
-                        public void setType(Type type) {
-                            super.setType(Type.POCKET);
+                        public void setType() {
+                            this.type = Type.POCKET;
                         }
                     };
                 case BOX:
@@ -72,8 +72,8 @@ public class HomeController extends Controller implements Initializable {
                         }
 
                         @Override
-                        public void setType(Type type) {
-                            super.setType(Type.BOX);
+                        public void setType() {
+                            this.type = Type.BOX;
                         }
                     };
                 case LABEL:

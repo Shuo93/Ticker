@@ -7,6 +7,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.stage.Stage;
 
+import java.math.BigDecimal;
+
 public class Controller {
 
     protected void addListener(ChoiceBox choiceBox, ChangeListener listener) {
@@ -21,9 +23,11 @@ public class Controller {
     }
 
     protected void showResult(double price) {
+        BigDecimal bd = new BigDecimal(price);
+        String result = bd.setScale(2, BigDecimal.ROUND_HALF_UP).toString();
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle("结果");
-        alert.setHeaderText(String.valueOf(price));
+        alert.setHeaderText(result);
         alert.setContentText("计算完成");
         alert.showAndWait();
     }

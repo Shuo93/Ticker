@@ -57,6 +57,24 @@ book:
   - fold
   - staple
   - glue
+  bindKey:
+    fold:
+    - 1f
+    - 2f
+    - 3f
+    - 4f
+    - 5f
+    staple:
+    - 8k
+    - 16k
+    glue:
+    - 24p-30p
+    - 32p-40p
+    - 42p-62p
+    - 64p-80p
+    - 108p
+    - 200p-228p
+    - 304p-320p
   weight:
   - 80g
   - 105g
