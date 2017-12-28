@@ -11,15 +11,13 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Text?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.ticker.desktop.controller.BoxController">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="285.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.ticker.desktop.controller.BoxController">
    <children>
       <GridPane hgap="10.0" prefWidth="300.0" vgap="5.0">
         <columnConstraints>
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="50.0" minWidth="10.0" prefWidth="50.0" />
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="150.0" minWidth="10.0" prefWidth="150.0" />
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="50.0" minWidth="10.0" prefWidth="50.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="74.0" minWidth="10.0" prefWidth="45.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="201.0" minWidth="10.0" prefWidth="170.0" />
         </columnConstraints>
         <rowConstraints>
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
@@ -43,10 +41,10 @@
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <ChoiceBox fx:id="uvChoiceBox" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="17" />
-            <ChoiceBox fx:id="sizeChoiceBox" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="6" />
-            <ChoiceBox fx:id="materialChoiceBox" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="7" />
-            <ChoiceBox fx:id="weightChoiceBox" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="8" />
+            <ChoiceBox fx:id="uvChoiceBox" prefWidth="170.0" GridPane.columnIndex="1" GridPane.rowIndex="17" />
+            <ChoiceBox fx:id="sizeChoiceBox" prefWidth="170.0" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+            <ChoiceBox fx:id="materialChoiceBox" prefWidth="170.0" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+            <ChoiceBox fx:id="weightChoiceBox" prefWidth="170.0" GridPane.columnIndex="1" GridPane.rowIndex="8" />
             <Label text="规格：" GridPane.rowIndex="6" />
             <Label text="材质：" GridPane.rowIndex="7" />
             <Label text="重量：" GridPane.rowIndex="8" />
@@ -54,11 +52,6 @@
             <Label text="UV：" GridPane.rowIndex="15" />
             <Label text="面积：" GridPane.rowIndex="16" />
             <Label text="长：" />
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Text" GridPane.columnIndex="2" GridPane.rowIndex="7" />
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Text" GridPane.columnIndex="2" GridPane.rowIndex="8" />
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Text" GridPane.columnIndex="2" GridPane.rowIndex="14" />
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Text" GridPane.columnIndex="2" GridPane.rowIndex="17" />
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Text" GridPane.columnIndex="2" GridPane.rowIndex="6" />
             <TextField fx:id="lengthText" GridPane.columnIndex="1" />
             <TextField fx:id="widthText" GridPane.columnIndex="1" GridPane.rowIndex="1" />
             <Label text="宽：" GridPane.rowIndex="1" />
@@ -67,10 +60,8 @@
             <Label text="钢刀：" GridPane.rowIndex="4" />
             <Label text="数量：" GridPane.rowIndex="3" />
             <TextField fx:id="numberText" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Text" GridPane.columnIndex="2" GridPane.rowIndex="2" />
             <CheckBox fx:id="printCheckBox" mnemonicParsing="false" onAction="#printChecked" text="CheckBox" GridPane.columnIndex="1" GridPane.rowIndex="9" />
             <Label text="印刷：" GridPane.rowIndex="9" />
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Text" GridPane.columnIndex="2" GridPane.rowIndex="3" />
             <Label text="瓦楞：" GridPane.rowIndex="10" />
             <Label text="覆膜：" GridPane.rowIndex="11" />
             <CheckBox fx:id="corrugateCheckBox" mnemonicParsing="false" onAction="#corrugateChecked" text="CheckBox" GridPane.columnIndex="1" GridPane.rowIndex="10" />
@@ -81,22 +72,18 @@
             <Label text="烫金：" GridPane.rowIndex="12" />
             <TextField fx:id="goldAreaText" GridPane.columnIndex="1" GridPane.rowIndex="13" />
             <TextField fx:id="uvAreaText" GridPane.columnIndex="1" GridPane.rowIndex="16" />
-            <ChoiceBox fx:id="goldChoiceBox" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="14" />
+            <ChoiceBox fx:id="goldChoiceBox" prefWidth="170.0" GridPane.columnIndex="1" GridPane.rowIndex="14" />
             <Label text="损耗：" GridPane.rowIndex="18" />
             <TextField fx:id="scaleText" GridPane.columnIndex="1" GridPane.rowIndex="18" />
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Text" GridPane.columnIndex="2" />
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Text" GridPane.columnIndex="2" GridPane.rowIndex="1" />
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Text" GridPane.columnIndex="2" GridPane.rowIndex="13" />
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Text" GridPane.columnIndex="2" GridPane.rowIndex="5" />
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Text" GridPane.columnIndex="2" GridPane.rowIndex="9" />
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Text" GridPane.columnIndex="2" GridPane.rowIndex="10" />
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Text" GridPane.columnIndex="2" GridPane.rowIndex="11" />
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Text" GridPane.columnIndex="2" GridPane.rowIndex="16" />
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Text" GridPane.columnIndex="2" GridPane.rowIndex="18" />
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Text" GridPane.columnIndex="2" GridPane.rowIndex="4" />
             <CheckBox fx:id="goldCheckBox" mnemonicParsing="false" onAction="#goldChecked" text="CheckBox" GridPane.columnIndex="1" GridPane.rowIndex="12" />
             <CheckBox fx:id="uvCheckBox" mnemonicParsing="false" onAction="#uvChecked" text="CheckBox" GridPane.columnIndex="1" GridPane.rowIndex="15" />
          </children>
+         <VBox.margin>
+            <Insets />
+         </VBox.margin>
+         <padding>
+            <Insets right="20.0" />
+         </padding>
       </GridPane>
       <HBox alignment="BOTTOM_CENTER" prefHeight="100.0" prefWidth="200.0" spacing="120.0">
          <children>

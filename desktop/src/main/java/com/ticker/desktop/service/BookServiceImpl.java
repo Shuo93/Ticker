@@ -80,7 +80,16 @@ public class BookServiceImpl implements BookService {
         ObservableList<ChoiceBoxItem> bindList = FXCollections.observableArrayList();
         list.stream().map(type -> {
             String name = bundle.getString(type);
-            return new ChoiceBoxItem(type, name, null);
+            int threshold = 0;
+            if (type.equals("fold")) {
+                threshold = book.getBind().getFold().getThreshold();
+            } else if (type.equals("staple")) {
+                threshold = book.getBind().getStaple().getThreshold();
+            } else if (type.equals("glue")) {
+                threshold = book.getBind().getGlue().getThreshold();
+            }
+            String display = name + " " + bundle.getString("start") + threshold + bundle.getString("yuan");
+            return new ChoiceBoxItem(type, display, null);
         }).forEach(bindList::add);
         return bindList;
     }
@@ -116,7 +125,24 @@ public class BookServiceImpl implements BookService {
         ObservableList<ChoiceBoxItem> bindList = FXCollections.observableArrayList();
         list.stream().map(type -> {
             String name = bundle.getString(type);
-            return new ChoiceBoxItem(type, name, null);
+            double bindPrice = 0.0;
+            int threshold = 0;
+            String unit = "";
+            if (id.equals("fold")) {
+                bindPrice = book.getBind().getFold().getList().get(type);
+                threshold = book.getBind().getFold().getThreshold();
+                unit = book.getBind().getFold().getUnit();
+            } else if (id.equals("staple")) {
+                bindPrice = book.getBind().getStaple().getList().get(type);
+                threshold = book.getBind().getStaple().getThreshold();
+                unit = book.getBind().getStaple().getUnit();
+            } else if (id.equals("glue")) {
+                bindPrice = book.getBind().getGlue().getList().get(type);
+                threshold = book.getBind().getGlue().getThreshold();
+                unit = book.getBind().getGlue().getUnit();
+            }
+            String display = name + " " + bindPrice + bundle.getString(unit);
+            return new ChoiceBoxItem(type, display, null);
         }).forEach(bindList::add);
         return bindList;
     }

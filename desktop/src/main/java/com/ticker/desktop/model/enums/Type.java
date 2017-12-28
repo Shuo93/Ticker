@@ -3,7 +3,7 @@ package com.ticker.desktop.model.enums;
 public enum Type {
     BOX("box"),
     POCKET("pocket"),
-    BOOK("book"),
+    BOOK("books"),
     LABEL("label");
 
     private String type;

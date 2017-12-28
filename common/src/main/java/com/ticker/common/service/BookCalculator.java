@@ -82,10 +82,10 @@ public class BookCalculator extends AbstractCalculator {
             if (bindType.equals("fold")) {
                 bindPrice = book.getBind().getFold().getList().get(bindKey) * bookNum;
                 threshold = book.getBind().getFold().getThreshold();
+
             } else if (bindType.equals("staple")) {
                 bindPrice = book.getBind().getStaple().getList().get(bindKey) * pageNum * bookNum;
                 threshold = book.getBind().getStaple().getThreshold();
-                bindPrice = (bindPrice > threshold) ? bindPrice : threshold;
             } else if (bindType.equals("glue")) {
                 bindPrice = book.getBind().getGlue().getList().get(bindKey) * bookNum;
                 threshold = book.getBind().getGlue().getThreshold();

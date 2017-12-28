@@ -11,15 +11,13 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Text?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="302.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.ticker.desktop.controller.BookController">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="295.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.ticker.desktop.controller.BookController">
    <children>
-      <GridPane hgap="10.0" prefWidth="300.0" vgap="5.0">
+      <GridPane hgap="10.0" prefWidth="232.0" vgap="5.0">
         <columnConstraints>
             <ColumnConstraints hgrow="SOMETIMES" maxWidth="50.0" minWidth="10.0" prefWidth="50.0" />
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="150.0" minWidth="10.0" prefWidth="150.0" />
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="50.0" minWidth="10.0" prefWidth="50.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="170.0" minWidth="10.0" prefWidth="170.0" />
         </columnConstraints>
         <rowConstraints>
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
@@ -36,19 +34,15 @@
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <ChoiceBox fx:id="sizeChoiceBox" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-            <ChoiceBox fx:id="materialChoiceBox" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-            <ChoiceBox fx:id="weightChoiceBox" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+            <ChoiceBox fx:id="sizeChoiceBox" prefWidth="170.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <ChoiceBox fx:id="materialChoiceBox" prefWidth="170.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+            <ChoiceBox fx:id="weightChoiceBox" prefWidth="170.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
             <Label text="规格：" GridPane.rowIndex="3" />
             <Label text="材质：" GridPane.rowIndex="4" />
             <Label text="重量：" GridPane.rowIndex="5" />
             <Label text="类型：" GridPane.rowIndex="9" />
             <Label text="本数：" GridPane.rowIndex="2" />
             <Label text="尺寸：" />
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Text" GridPane.columnIndex="2" GridPane.rowIndex="4" />
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Text" GridPane.columnIndex="2" GridPane.rowIndex="5" />
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Text" GridPane.columnIndex="2" GridPane.rowIndex="9" />
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Text" GridPane.columnIndex="2" GridPane.rowIndex="3" />
             <TextField fx:id="pageText" GridPane.columnIndex="1" GridPane.rowIndex="1" />
             <Label text="页数：" GridPane.rowIndex="1" />
             <CheckBox fx:id="printCheckBox" mnemonicParsing="false" onAction="#printChecked" text="CheckBox" GridPane.columnIndex="1" GridPane.rowIndex="6" />
@@ -57,19 +51,12 @@
             <CheckBox fx:id="laminateCheckBox" mnemonicParsing="false" onAction="#laminateChecked" text="CheckBox" GridPane.columnIndex="1" GridPane.rowIndex="7" />
             <Label text="装订：" GridPane.rowIndex="8" />
             <TextField fx:id="numberText" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-            <ChoiceBox fx:id="bindTypeChoiceBox" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="9" />
+            <ChoiceBox fx:id="bindTypeChoiceBox" prefWidth="170.0" GridPane.columnIndex="1" GridPane.rowIndex="9" />
             <Label text="损耗：" GridPane.rowIndex="11" />
             <TextField fx:id="scaleText" GridPane.columnIndex="1" GridPane.rowIndex="11" />
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Text" GridPane.columnIndex="2" />
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Text" GridPane.columnIndex="2" GridPane.rowIndex="1" />
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Text" GridPane.columnIndex="2" GridPane.rowIndex="2" />
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Text" GridPane.columnIndex="2" GridPane.rowIndex="6" />
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Text" GridPane.columnIndex="2" GridPane.rowIndex="7" />
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Text" GridPane.columnIndex="2" GridPane.rowIndex="11" />
             <CheckBox fx:id="bindCheckBox" mnemonicParsing="false" onAction="#bindChecked" text="CheckBox" GridPane.columnIndex="1" GridPane.rowIndex="8" />
-            <ChoiceBox fx:id="areaChoiceBox" prefWidth="150.0" GridPane.columnIndex="1" />
-            <ChoiceBox fx:id="bindKeyChoiceBox" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="10" />
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Text" GridPane.columnIndex="2" GridPane.rowIndex="10" />
+            <ChoiceBox fx:id="areaChoiceBox" prefWidth="170.0" GridPane.columnIndex="1" />
+            <ChoiceBox fx:id="bindKeyChoiceBox" prefWidth="170.0" GridPane.columnIndex="1" GridPane.rowIndex="10" />
             <Label text="价格：" GridPane.rowIndex="10" />
          </children>
       </GridPane>

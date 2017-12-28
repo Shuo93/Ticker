@@ -105,5 +105,6 @@ public abstract class BookController extends Controller implements IController, 
             String id = ((ChoiceBoxItem)newValue).getId();
             bindKeyChoiceBox.setItems(service.getBindKey(id));
         });
+        scaleText.setText("1.0");
     }
 }

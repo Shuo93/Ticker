@@ -69,7 +69,22 @@ public class BoxServiceImpl implements BoxService {
         ObservableList<ChoiceBoxItem> sizeList = FXCollections.observableArrayList();
         list.stream().map(size -> {
             String name = bundle.getString(size);
-            return new ChoiceBoxItem(size, name, null);
+            String display = "";
+            if (size.equals("big")) {
+                double price = box.getProcess().getGold().getBig().getPrice();
+                String unit = box.getProcess().getGold().getBig().getUnit();
+                display = name + " " + String.valueOf(price) + bundle.getString(unit);
+            } else if (size.equals("small")) {
+                double price = box.getProcess().getGold().getSmall().getPrice();
+                String unit = box.getProcess().getGold().getSmall().getUnit();
+                double priceEx = box.getProcess().getGold().getExtra().getPrice();
+                String unitEx = box.getProcess().getGold().getExtra().getUnit();
+                display = name + " " + String.valueOf(price) + bundle.getString(unit) + " "
+                        + bundle.getString("extra") + " " + String.valueOf(priceEx)
+                        + bundle.getString(unitEx);
+            }
+
+            return new ChoiceBoxItem(size, display, null);
         }).forEach(sizeList::add);
         return sizeList;
     }
@@ -80,7 +95,18 @@ public class BoxServiceImpl implements BoxService {
         ObservableList<ChoiceBoxItem> uvList = FXCollections.observableArrayList();
         list.stream().map(uv -> {
             String name = bundle.getString(uv);
-            return new ChoiceBoxItem(uv, name, null);
+            double price = 0.0;
+            String unit = "";
+            String display = "";
+            if (uv.equals("big")) {
+                price = box.getProcess().getUv().getBig().getPrice();
+                unit = box.getProcess().getUv().getBig().getUnit();
+            } else if (uv.equals("small")) {
+                price = box.getProcess().getUv().getSmall().getPrice();
+                unit = box.getProcess().getUv().getSmall().getUnit();
+            }
+            display = name + " " + String.valueOf(price) + bundle.getString(unit);
+            return new ChoiceBoxItem(uv, display, null);
         }).forEach(uvList::add);
         return uvList;
     }
@@ -140,7 +166,11 @@ public class BoxServiceImpl implements BoxService {
     @Override
     public CheckBoxItem getUv() {
         String id = "uv";
-        CheckBoxItem item = new CheckBoxItem(id, "", null, false);
+        int threshold = box.getProcess().getUv().getThreshold();
+        String display = bundle.getString("start")
+                + String.valueOf(threshold)
+                + bundle.getString("yuan");
+        CheckBoxItem item = new CheckBoxItem(id, display, null, false);
         return item;
     }
 

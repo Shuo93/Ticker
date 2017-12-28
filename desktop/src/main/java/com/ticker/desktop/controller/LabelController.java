@@ -35,8 +35,10 @@ public abstract class LabelController extends Controller implements IController,
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         setService();
+        areaText.setPromptText("平方米");
         typeChoiceBox.setItems(service.getTypeList());
         addListener(typeChoiceBox, (observable, oldValue, newValue) -> {});
+        scaleText.setText("1.0");
     }
 
     @FXML

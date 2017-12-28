@@ -69,6 +69,11 @@ public abstract class BoxController extends Controller implements Initializable,
         bundle = resources;
         setService();
         setType();
+        lengthText.setPromptText("厘米");
+        widthText.setPromptText("厘米");
+        heightText.setPromptText("厘米");
+        goldAreaText.setPromptText("平方米");
+        uvAreaText.setPromptText("平方米");
         knifeCheckBox.setText(service.getKnife().getText());
         knifeCheckBox.setSelected(service.getKnife().isChecked());
         knifeCheckBox.setAllowIndeterminate(false);

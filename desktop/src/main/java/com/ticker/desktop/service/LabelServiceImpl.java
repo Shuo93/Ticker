@@ -13,6 +13,8 @@ import java.util.ResourceBundle;
 
 
 public class LabelServiceImpl implements LabelService {
+
+    private Label label = DataLoader.getInstance().getProductInfo().getLabel();
     @Override
     public ObservableList<ChoiceBoxItem> getTypeList() {
         Locale locale = Locale.getDefault();
@@ -22,8 +24,10 @@ public class LabelServiceImpl implements LabelService {
         ObservableList<ChoiceBoxItem> typeList = FXCollections.observableArrayList();
         types.stream().map(type -> {
             String name = bundle.getString(type);
-            double price = DataLoader.getInstance().getProductInfo().getLabel().getPrice().get(type);
-            return new ChoiceBoxItem(type, name, price);
+            double price = label.getPrice().get(type);
+            String unit = label.getUnit();
+            String display = name + " " + String.valueOf(price) + bundle.getString(unit);
+            return new ChoiceBoxItem(type, display, price);
         }).forEach(typeList::add);
         return typeList;
     }
